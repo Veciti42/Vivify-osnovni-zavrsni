@@ -11,6 +11,12 @@
     {
         echo $e->getMessage();
     }
+
+    $sql = "SELECT * FROM blog.posts ORDER BY Created_at DESC";
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $posts = $statement->fetchAll();
 ?>
 
 <!doctype html>
